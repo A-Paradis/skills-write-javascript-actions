@@ -12,10 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: ha-ha
+        id: joke
         uses: ./.github/actions/joke-action
 
       - name: Save joke to file
-        run: echo "${{ steps.ha-ha.outputs.joke-output }}" > joke.txt
+        run: echo "${{ steps.joke.outputs.joke-output }}" > joke.txt
 
       - name: Upload joke as artifact
         uses: actions/upload-artifact@v4
